@@ -18,7 +18,7 @@ After that, the files can be compiled simply by running the following command in
 ```bash
 g++ -g -std=c++17 -Wall -O2 fieldConcrete.cpp filePathManager.cpp example.cpp -o example.o -lnetcdf -lnetcdf_c++4                                                                                                                                                                                   
 ```
-TODO: `Example.cpp` is currently missing
+Inside the `example.cpp`  file, you can find a simple example of how to use the library. The example uses a `Field` and `NetCDFField` classes which are example classes showing how the library can be utilized with different implementations.
 
 Simple netcdf files can be generated using the [python script](./src/test_data/gen_test_cdf.py).
 
