@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+
+# vscode
+.vscode
+vscode
+
+# Python environments
+.venv
+venv
+
+# data fiels
+*.nc
+*.nc4
+
