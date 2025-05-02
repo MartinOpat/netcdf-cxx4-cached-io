@@ -4,7 +4,25 @@ A lightweight C++ library for reading NetCDF files, built on the NetCDF CXX4 int
 This project was originally developed as a part of the high-performance flexible Lagrangian particle tracer: [Link goes here once public]
 
 ## Example use
-- [ ] TODO
+For this library to work, you need to have the netcdf libraries installed.
+- Ubuntu:
+```bash
+sudo apt install something
+```
+- Arch:
+```bash
+sudo pacman -s something
+```
+
+After that, the files can be compiled simply by running the following command in the `src` directory:
+```bash
+g++ -g -std=c++17 -Wall -O2 fieldConcrete.cpp filePathManager.cpp example.cpp -o example.o -lnetcdf -lnetcdf_c++4                                                                                                                                                                                   
+```
+
+Simple netcdf files can be generated using the [python script](./src/test_data/gen_test_cdf.py). The example is configured to detect these automatically. Then the compiled executable can be run as:
+```bash
+./example.o
+```
 
 ## License
 This project is listed under a custom non-commercial license. You are free to use, share, and modify the project with attribution. **Commercial use requires explicit permission and compensation.** See the [LICENSE](./LICENSE)
