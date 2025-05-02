@@ -22,5 +22,8 @@ Inside the `example.cpp`  file, you can find a simple example of how to use the 
 
 Simple netcdf files can be generated using the [python script](./src/test_data/gen_test_cdf.py).
 
+## Future work
+The O part of IO (coming soon)
+
 ## License
 This project is listed under a custom non-commercial license. You are free to use, share, and modify the project with attribution. **Commercial use requires explicit permission and compensation.** See the [LICENSE](./LICENSE)
