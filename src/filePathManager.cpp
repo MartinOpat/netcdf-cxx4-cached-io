@@ -1,4 +1,5 @@
-#include "filePathManager.h"
+#include "filePathManager.hpp"
+
 #include <algorithm>
 #include <filesystem>
 #include <iostream>
