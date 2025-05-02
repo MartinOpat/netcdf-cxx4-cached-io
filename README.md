@@ -16,7 +16,7 @@ sudo pacman -S netcdf-cxx
 
 After that, the files can be compiled simply by running the following command in the `src` directory:
 ```bash
-g++ -g -std=c++17 -Wall -O2 fieldConcrete.cpp filePathManager.cpp example.cpp -o example.o -lnetcdf -lnetcdf_c++4                                                                                                                                                                                   
+g++ -g -std=c++17 -Wall -O2 filePathManager.cpp example.cpp -o example.o -lnetcdf -lnetcdf_c++4
 ```
 Inside the `example.cpp`  file, you can find a simple example of how to use the library. The example uses a `Field` and `NetCDFField` classes which are example classes showing how the library can be utilized with different implementations.
 

@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "field.hpp"
-#include "fileReader/netcdfReader.h"
+#include "netcdfReader.hpp"
 
 template <typename T> class NetCDFField final : public Field {
 public:

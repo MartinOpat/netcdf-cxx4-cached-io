@@ -2,6 +2,8 @@
 #include "timeBuffer.hpp"
 #include "timeFinder.hpp"
 #include "netcdfReader.hpp"
+#include "field.hpp"
+#include "netcdfField.hpp"
 
 #include <iostream>
 #include <memory>
