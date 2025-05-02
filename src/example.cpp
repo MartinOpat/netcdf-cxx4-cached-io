@@ -1,25 +1,46 @@
 #include "filePathManager.hpp"
 #include "timeBuffer.hpp"
 #include "timeFinder.hpp"
+#include "netcdfReader.hpp"
 
 #include <iostream>
+#include <memory>
+#include <vector>
 
-int main() {
+using FieldPtr = std::shared_ptr<Field>;
+
+template <typename T> class FieldTimeBuffer : public TimeBuffer<FieldPtr> {
+public:
+  explicit FieldTimeBuffer(size_t num_files = 3)
+      : TimeBuffer<FieldPtr>(num_files) {}
+
+protected:
+  FieldPtr load(const TimeKey &k) override {
+    return std::make_shared<NetCDFField<T>>(k.file, k.var, k.time);
+  }
+};
+
+
+int main(int argc, char **argv) {
   FilePathManager files("test_data/data");
   const size_t STEPS_PER_FILE =
-      2; // TODO: This should either go into the config or be autodetected
+      2;
 
   TimeFinder tf(files, STEPS_PER_FILE);
-  TimeBuffer<float> tb(3);
+  FieldTimeBuffer<float> tb(
+      3);
 
-  size_t t = 0;         // global time
-  size_t num_files = 3; // This is just for testing
+  size_t t = 0;
+  size_t num_files = 3;
 
   while (t < num_files * STEPS_PER_FILE) {
     auto [path, local_t] = tf.find_local(t);
     auto field = tb.get(path, "test_value", local_t);
 
-    float v = field->at(0, 0, 0);
+    // Note: Field is just an example class. Any class can be used with the loader and/or buffer
+    auto data = field->data();
+    float v = *reinterpret_cast<float *>(data) +
+              field->index(0, 0, 0) * sizeof(float);
     std::cout << "T(" << t << ") = " << v << std::endl;
 
     t++;
